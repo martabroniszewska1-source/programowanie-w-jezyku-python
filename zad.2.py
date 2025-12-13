@@ -8,7 +8,9 @@ class Student:
         self.student_id = student_id
 
     def __str__(self):
-        return f"Student: {self.first_name} {self.last_name} (ID: {self.student_id})"
+        return (f"Student: {self.first_name} {self.last_name}"
+                f"(ID: {self.student_id})"
+                )
 
 
 class Library:
@@ -49,7 +51,8 @@ class Employee:
 
     def __str__(self):
         return (
-            f"Employee: {self.first_name} {self.last_name} (Data zatrudnienia: {self.hire_date}, "
+            f"Employee: {self.first_name} {self.last_name} "
+            f"(Data zatrudnienia: {self.hire_date}, "
             f"Miasto: {self.city})"
         )
 
