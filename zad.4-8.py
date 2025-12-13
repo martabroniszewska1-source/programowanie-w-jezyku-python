@@ -7,14 +7,14 @@ API_URL = "https://api.openbrewerydb.org/v1/breweries"
 
 class Brewery:
     def __init__(
-            self,
-            name: str,
-            brewery_type: str,
-            city: str,
-            state: str,
-            country: str,
-            phone: Optional[str],
-            website_url: Optional[str]
+        self,
+        name: str,
+        brewery_type: str,
+        city: str,
+        state: str,
+        country: str,
+        phone: Optional[str],
+        website_url: Optional[str],
     ):
         self.name = name
         self.brewery_type = brewery_type
@@ -26,7 +26,9 @@ class Brewery:
 
     def __str__(self) -> str:
         phone_info = f"Telefon: {self.phone}" if self.phone else "Telefon: Brak"
-        website_info = f"Strona: {self.website_url}" if self.website_url else "Strona: Brak"
+        website_info = (
+            f"Strona: {self.website_url}" if self.website_url else "Strona: Brak"
+        )
 
         return (
             f"--- BROWAR: {self.name.upper()} ---\n"
@@ -38,13 +40,15 @@ class Brewery:
 
 
 def parse_arguments():
-    parser = argparse.ArgumentParser(description="Pobiera dane o browarach z Open Brewery DB API.")
+    parser = argparse.ArgumentParser(
+        description="Pobiera dane o browarach z Open Brewery DB API."
+    )
 
     parser.add_argument(
-        '--city',
+        "--city",
         type=str,
         default=None,
-        help='Ogranicza pobierane browary do podanego miasta. Przykład: --city=San_Diego'
+        help="Ogranicza pobierane browary do podanego miasta. Przykład: --city=San_Diego",
     )
 
     return parser.parse_args()
@@ -55,7 +59,7 @@ def get_breweries_from_api(per_page: int = 20, city: Optional[str] = None) -> li
         params = {"per_page": per_page}
 
         if city:
-            city_api_format = city.replace(' ', '_').replace('-', '_')
+            city_api_format = city.replace(" ", "_").replace("-", "_")
             params["by_city"] = city_api_format
             print(f"Pobieranie {per_page} browarów dla miasta: {city}...")
         else:
@@ -75,13 +79,13 @@ def brewery_factory(breweries_data: list) -> List[Brewery]:
     brewery_objects = []
     for data in breweries_data:
         brewery = Brewery(
-            name=data.get('name', 'Brak Nazwy'),
-            brewery_type=data.get('brewery_type', 'Nieznany'),
-            city=data.get('city', 'Nieznane Miasto'),
-            state=data.get('state', 'Nieznany Stan'),
-            country=data.get('country', 'Nieznany Kraj'),
-            phone=data.get('phone'),
-            website_url=data.get('website_url')
+            name=data.get("name", "Brak Nazwy"),
+            brewery_type=data.get("brewery_type", "Nieznany"),
+            city=data.get("city", "Nieznane Miasto"),
+            state=data.get("state", "Nieznany Stan"),
+            country=data.get("country", "Nieznany Kraj"),
+            phone=data.get("phone"),
+            website_url=data.get("website_url"),
         )
         brewery_objects.append(brewery)
 
@@ -95,7 +99,9 @@ def main():
     breweries_data = get_breweries_from_api(per_page=20, city=city_filter)
 
     if not breweries_data:
-        print("Nie udało się pobrać danych z API lub nie znaleziono browarów dla podanych kryteriów.")
+        print(
+            "Nie udało się pobrać danych z API lub nie znaleziono browarów dla podanych kryteriów."
+        )
         return
 
     breweries_objects = brewery_factory(breweries_data)

@@ -6,14 +6,14 @@ API_URL = "https://api.openbrewerydb.org/v1/breweries"
 
 class Brewery:
     def __init__(
-            self,
-            name: str,
-            brewery_type: str,
-            city: str,
-            state: str,
-            country: str,
-            phone: Optional[str],
-            website_url: Optional[str]
+        self,
+        name: str,
+        brewery_type: str,
+        city: str,
+        state: str,
+        country: str,
+        phone: Optional[str],
+        website_url: Optional[str],
     ):
         self.name = name
         self.brewery_type = brewery_type
@@ -25,7 +25,9 @@ class Brewery:
 
     def __str__(self) -> str:
         phone_info = f"Telefon: {self.phone}" if self.phone else "Telefon: Brak"
-        website_info = f"Strona: {self.website_url}" if self.website_url else "Strona: Brak"
+        website_info = (
+            f"Strona: {self.website_url}" if self.website_url else "Strona: Brak"
+        )
 
         return (
             f"--- BROWAR: {self.name.upper()} ---\n"
@@ -53,13 +55,13 @@ def brewery_factory(breweries_data: list) -> List[Brewery]:
     brewery_objects = []
     for data in breweries_data:
         brewery = Brewery(
-            name=data.get('name', 'Brak Nazwy'),
-            brewery_type=data.get('brewery_type', 'Nieznany'),
-            city=data.get('city', 'Nieznane Miasto'),
-            state=data.get('state', 'Nieznany Stan'),
-            country=data.get('country', 'Nieznany Kraj'),
-            phone=data.get('phone'),
-            website_url=data.get('website_url')
+            name=data.get("name", "Brak Nazwy"),
+            brewery_type=data.get("brewery_type", "Nieznany"),
+            city=data.get("city", "Nieznane Miasto"),
+            state=data.get("state", "Nieznany Stan"),
+            country=data.get("country", "Nieznany Kraj"),
+            phone=data.get("phone"),
+            website_url=data.get("website_url"),
         )
         brewery_objects.append(brewery)
 
