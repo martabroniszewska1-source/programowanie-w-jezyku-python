@@ -1,6 +1,8 @@
 # tests for is_palindrome
 
-from functions import is_palindrome, fibonacci, count_vowels
+import pytest
+
+from functions import is_palindrome, fibonacci, count_vowels, calculate_discount
 
 
 def test_kajak():
@@ -22,10 +24,8 @@ def test_empty_string():
 def test_single_character():
     assert is_palindrome("A") is True
 
+
 # tests for fibonacci
-
-import pytest
-
 
 def test_fibonacci_0():
     assert fibonacci(0) == 0
@@ -47,6 +47,7 @@ def test_fibonacci_negative():
     with pytest.raises(ValueError):
         fibonacci(-1)
 
+
 # tests for count_vowels
 
 def test_count_vowels_python():
@@ -67,3 +68,27 @@ def test_count_vowels_empty_string():
 
 def test_count_vowels_polish_chars():
     assert count_vowels("Próba żółwia") == 5
+
+
+#tests for calculate_discount
+
+def test_calculate_discount_standard():
+    assert calculate_discount(100, 0.2) == 80.0
+
+
+def test_calculate_discount_zero():
+    assert calculate_discount(50, 0) == 50.0
+
+
+def test_calculate_discount_full():
+    assert calculate_discount(200, 1) == 0.0
+
+
+def test_calculate_discount_negative():
+    with pytest.raises(ValueError):
+        calculate_discount(100, -0.1)
+
+
+def test_calculate_discount_too_high():
+    with pytest.raises(ValueError):
+        calculate_discount(100, 1.5)
