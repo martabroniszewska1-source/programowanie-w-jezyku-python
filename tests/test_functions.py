@@ -2,7 +2,7 @@
 
 import pytest
 
-from functions import is_palindrome, fibonacci, count_vowels, calculate_discount
+from functions import is_palindrome, fibonacci, count_vowels, calculate_discount, flatten_list
 
 
 def test_kajak():
@@ -92,3 +92,25 @@ def test_calculate_discount_negative():
 def test_calculate_discount_too_high():
     with pytest.raises(ValueError):
         calculate_discount(100, 1.5)
+
+
+# tests for flatten_list
+
+def test_flatten_simple():
+    assert flatten_list([1, 2, 3]) == [1, 2, 3]
+
+
+def test_flatten_nested():
+    assert flatten_list([1, [2, 3], [4, [5]]]) == [1, 2, 3, 4, 5]
+
+
+def test_flatten_empty():
+    assert flatten_list([]) == []
+
+
+def test_flatten_deep_nested():
+    assert flatten_list([[[1]]]) == [1]
+
+
+def test_flatten_mixed():
+    assert flatten_list([1, 2, [3, [4]]]) == [1, 2, 3, 4]
