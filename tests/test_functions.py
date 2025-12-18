@@ -1,6 +1,6 @@
 # tests for is_palindrome
 
-from functions import is_palindrome, fibonacci
+from functions import is_palindrome, fibonacci, count_vowels
 
 
 def test_kajak():
@@ -22,7 +22,7 @@ def test_empty_string():
 def test_single_character():
     assert is_palindrome("A") is True
 
-#tests for fibonacci
+# tests for fibonacci
 
 import pytest
 
@@ -46,3 +46,24 @@ def test_fibonacci_10():
 def test_fibonacci_negative():
     with pytest.raises(ValueError):
         fibonacci(-1)
+
+# tests for count_vowels
+
+def test_count_vowels_python():
+    assert count_vowels("Python") == 2
+
+
+def test_count_vowels_all_vowels():
+    assert count_vowels("AEIOUY") == 6
+
+
+def test_count_vowels_no_vowels():
+    assert count_vowels("bcd") == 0
+
+
+def test_count_vowels_empty_string():
+    assert count_vowels("") == 0
+
+
+def test_count_vowels_polish_chars():
+    assert count_vowels("Próba żółwia") == 5
