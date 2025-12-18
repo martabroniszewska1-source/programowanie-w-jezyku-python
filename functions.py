@@ -42,4 +42,17 @@ def flatten_list(nested_list: list) -> list:
 
     return result
 
+# word_frequencies
+
+import re
+
+def word_frequencies(text: str) -> dict:
+    words = re.findall(r"\b\w+\b", text.lower())
+    frequencies = {}
+
+    for word in words:
+        frequencies[word] = frequencies.get(word, 0) + 1
+
+    return frequencies
+
 

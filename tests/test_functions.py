@@ -2,7 +2,7 @@
 
 import pytest
 
-from functions import is_palindrome, fibonacci, count_vowels, calculate_discount, flatten_list
+from functions import is_palindrome, fibonacci, count_vowels, calculate_discount, flatten_list, word_frequencies
 
 
 def test_kajak():
@@ -114,3 +114,37 @@ def test_flatten_deep_nested():
 
 def test_flatten_mixed():
     assert flatten_list([1, 2, [3, [4]]]) == [1, 2, 3, 4]
+
+
+# tests for word_frequencies
+
+def test_word_frequencies_basic():
+    assert word_frequencies("To be or not to be") == {
+        "to": 2,
+        "be": 2,
+        "or": 1,
+        "not": 1,
+    }
+
+
+def test_word_frequencies_punctuation():
+    assert word_frequencies("Hello, hello!") == {"hello": 2}
+
+
+def test_word_frequencies_empty():
+    assert word_frequencies("") == {}
+
+
+def test_word_frequencies_case_insensitive():
+    assert word_frequencies("Python Python python") == {"python": 3}
+
+
+def test_word_frequencies_polish_sentence():
+    assert word_frequencies("Ala ma kota, a kot ma Ale.") == {
+        "ala": 1,
+        "ma": 2,
+        "kota": 1,
+        "a": 1,
+        "kot": 1,
+        "ale": 1,
+    }
