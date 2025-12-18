@@ -2,7 +2,7 @@
 
 import pytest
 
-from functions import is_palindrome, fibonacci, count_vowels, calculate_discount, flatten_list, word_frequencies
+from functions import is_palindrome, fibonacci, count_vowels, calculate_discount, flatten_list, word_frequencies, is_prime
 
 
 def test_kajak():
@@ -148,3 +148,34 @@ def test_word_frequencies_polish_sentence():
         "kot": 1,
         "ale": 1,
     }
+
+
+# tests for is_prime
+def test_is_prime_2():
+    assert is_prime(2) is True
+
+
+def test_is_prime_3():
+    assert is_prime(3) is True
+
+
+def test_is_prime_4():
+    assert is_prime(4) is False
+
+
+def test_is_prime_0():
+    assert is_prime(0) is False
+
+
+def test_is_prime_1():
+    assert is_prime(1) is False
+
+
+def test_is_prime_5():
+    assert is_prime(5) is True
+
+
+def test_is_prime_97():
+    assert is_prime(97) is True
+
+
