@@ -2,7 +2,15 @@
 
 import pytest
 
-from functions import is_palindrome, fibonacci, count_vowels, calculate_discount, flatten_list, word_frequencies, is_prime
+from functions import (
+    is_palindrome,
+    fibonacci,
+    count_vowels,
+    calculate_discount,
+    flatten_list,
+    word_frequencies,
+    is_prime,
+)
 
 
 def test_kajak():
@@ -27,6 +35,7 @@ def test_single_character():
 
 # tests for fibonacci
 
+
 def test_fibonacci_0():
     assert fibonacci(0) == 0
 
@@ -50,6 +59,7 @@ def test_fibonacci_negative():
 
 # tests for count_vowels
 
+
 def test_count_vowels_python():
     assert count_vowels("Python") == 2
 
@@ -70,7 +80,8 @@ def test_count_vowels_polish_chars():
     assert count_vowels("Próba żółwia") == 5
 
 
-#tests for calculate_discount
+# tests for calculate_discount
+
 
 def test_calculate_discount_standard():
     assert calculate_discount(100, 0.2) == 80.0
@@ -96,6 +107,7 @@ def test_calculate_discount_too_high():
 
 # tests for flatten_list
 
+
 def test_flatten_simple():
     assert flatten_list([1, 2, 3]) == [1, 2, 3]
 
@@ -117,6 +129,7 @@ def test_flatten_mixed():
 
 
 # tests for word_frequencies
+
 
 def test_word_frequencies_basic():
     assert word_frequencies("To be or not to be") == {
@@ -177,5 +190,3 @@ def test_is_prime_5():
 
 def test_is_prime_97():
     assert is_prime(97) is True
-
-
